@@ -26,4 +26,5 @@ public class ChambreServiceImpl implements IChambreService{
     public Chambre modifyChambre(Chambre chambre) {
         return chambreRepository.save(chambre);
     }
+
 }
