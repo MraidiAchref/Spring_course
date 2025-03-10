@@ -21,7 +21,7 @@ public class EtudiantRestController {
 
     //http://localhost:8089/tpfoyer/etudiant/retrieve-all-etudiants
     @Operation(description = "Récupérer tous les étudiants de la base de données")
-    @GetMapping("/retrieve-all-blocs")
+    @GetMapping("/retrieve-all-etudiant")
     public List<Etudiant> getEtudiants(){
         return etudiantService.retrieveAllEtudiants();
     }
