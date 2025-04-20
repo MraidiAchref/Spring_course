@@ -2,9 +2,11 @@ package tn.esprit.tpfoyer.control;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.websocket.server.PathParam;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import tn.esprit.tpfoyer.entity.Bloc;
 import tn.esprit.tpfoyer.entity.Foyer;
 import tn.esprit.tpfoyer.service.IFoyerService;
 
@@ -18,6 +20,12 @@ public class FoyerRestController {
     @Autowired
     IFoyerService foyerService ;
 
+    @PutMapping("/desaffecter-bloc-From-foyer/{blocId}/{foyerId}")
+    public void desaffecterProjetFromEquipe(@PathVariable("blocId") Long blocId,
+                                            @PathVariable("foyerId") Long foyerId) {
+
+        foyerService.desaffecterBlocFromFoyer(blocId, foyerId);
+    }
     //http://localhost:8089/tpfoyer/foyer/retrieve-all-foyers
     @Operation(description = "Récupérer tous les foyers de la base de données")
     @GetMapping("/retrieve-all-foyers")
@@ -48,5 +56,10 @@ public class FoyerRestController {
     @PutMapping("/modify-foyer")
     public Foyer modifyFoyer(@RequestBody Foyer foyer){
         return foyerService.modifyFoyer(foyer) ;
+    }
+    @PutMapping("/affectBlockToFoyer/{foyerId}/{blockId}")
+    public Foyer modifyFoyer(@PathVariable("blockId") Long blockId ,
+                             @PathVariable("foyerId") Long foyerId){
+        return foyerService.affectBlockToFoyer( foyerId , blockId) ;
     }
 }

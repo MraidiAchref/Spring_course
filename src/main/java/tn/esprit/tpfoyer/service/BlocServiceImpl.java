@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import tn.esprit.tpfoyer.entity.Bloc;
 import tn.esprit.tpfoyer.entity.Chambre;
+import tn.esprit.tpfoyer.entity.Foyer;
 import tn.esprit.tpfoyer.repository.BlocRepository;
 
 import java.util.List;
@@ -22,10 +23,14 @@ public class BlocServiceImpl implements IBlocService{
     public Bloc addBloc(Bloc b){
         return blocRepository.save(b) ;
     };
+
     public void removeBloc(Long idBloc){
         blocRepository.deleteById(idBloc);
     };
     public Bloc modifyBloc(Bloc bloc){
         return blocRepository.save(bloc) ;
     };
+    public List<Bloc> retrieveBlocsWithNullFoyer(){
+        return blocRepository.findAllByFoyerInBlocIsNull();
+    }
 }

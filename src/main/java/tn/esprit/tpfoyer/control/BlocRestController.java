@@ -49,4 +49,10 @@ public class BlocRestController {
     public Bloc modifyBloc(@RequestBody Bloc bloc){
         return blocService.modifyBloc(bloc) ;
     }
+
+    @Operation(description = "Récupérer tous les blocs sans foyer")
+    @GetMapping("/retrieve-blocs-with-null-foyer")
+    public List<Bloc> retrieveBlocsWithNullFoyer(){
+        return blocService.retrieveBlocsWithNullFoyer();
+    }
 }

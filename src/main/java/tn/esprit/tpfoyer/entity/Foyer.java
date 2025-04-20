@@ -1,11 +1,13 @@
 package tn.esprit.tpfoyer.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -13,7 +15,7 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-
+@ToString
 public class Foyer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,6 +27,6 @@ public class Foyer {
     @OneToOne(mappedBy = "foyer")
     private Universite universite ;
 
-    @OneToMany(cascade =CascadeType.ALL , mappedBy = "Foyer")
-    private Set<Bloc> blocs ;
+    @OneToMany(cascade =CascadeType.ALL , mappedBy = "foyerInBloc" , fetch = FetchType.LAZY)
+    private List<Bloc> blocs = new ArrayList<Bloc>();
 }

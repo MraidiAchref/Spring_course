@@ -26,5 +26,7 @@ public class ChambreServiceImpl implements IChambreService{
     public Chambre modifyChambre(Chambre chambre) {
         return chambreRepository.save(chambre);
     }
-
+    public Chambre trouverChselonEt(long cin) {
+        return chambreRepository.trouverChselonEt(cin);
+    }
 }

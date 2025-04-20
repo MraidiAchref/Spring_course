@@ -52,4 +52,11 @@ public class ChambreRestController {
     public Chambre modifyChambre(@RequestBody Chambre c) {
         return chambreService.modifyChambre(c);
     }
+
+    // http://localhost:8089/tpfoyer/chambre/trouverChselonEt/12345678
+    @Operation(description = "Trouver une chambre selon  cin étudiant")
+    @GetMapping("/trouverChselonEt/{cin}")
+    public Chambre trouverChselonEt(@PathVariable("cin") long cin) {
+        return chambreService.trouverChselonEt(cin);
+    }
 }

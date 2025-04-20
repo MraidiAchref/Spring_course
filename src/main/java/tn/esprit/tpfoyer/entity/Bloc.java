@@ -1,10 +1,8 @@
 package tn.esprit.tpfoyer.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.Set;
 
@@ -13,6 +11,7 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class Bloc {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,8 +21,8 @@ public class Bloc {
     private String nomBloc ;
     private Long capaciteBloc ;
 
-    @ManyToOne
-    private Foyer Foyer ;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Foyer foyerInBloc ;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "bloc")
     private Set<Chambre> chambres ;

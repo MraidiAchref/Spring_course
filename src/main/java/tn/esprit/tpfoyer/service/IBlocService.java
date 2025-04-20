@@ -11,4 +11,6 @@ public interface IBlocService {
     public Bloc addBloc(Bloc b);
     public void removeBloc(Long idBloc);
     public Bloc modifyBloc(Bloc bloc);
-}
+    public List<Bloc> retrieveBlocsWithNullFoyer();
+
+    }
